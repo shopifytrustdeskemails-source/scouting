@@ -17,7 +17,6 @@
             min-height: 100vh;
         }
         
-        /* Sidebar */
         .sidebar {
             position: fixed;
             left: 0;
@@ -66,7 +65,6 @@
             font-size: 18px;
         }
         
-        /* Main content */
         .main-content {
             margin-left: 250px;
             padding: 30px 40px;
@@ -102,7 +100,6 @@
             font-weight: 600;
         }
         
-        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -135,7 +132,6 @@
             margin-top: 5px;
         }
         
-        /* Charts */
         .chart-container {
             background: white;
             padding: 25px;
@@ -181,7 +177,6 @@
             color: #718096;
         }
         
-        /* Recent Activity */
         .activity-container {
             background: white;
             padding: 25px;
@@ -247,35 +242,33 @@
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
     <div class="sidebar">
         <div class="logo">📧 <span>EmailPro</span></div>
         <nav>
-            <a href="#" class="nav-item active">
+            <a href="dashboard.html" class="nav-item active">
                 <span class="icon">📊</span> Dashboard
             </a>
-            <a href="#" class="nav-item">
+            <a href="campaigns.html" class="nav-item">
                 <span class="icon">📧</span> Campaigns
             </a>
-            <a href="#" class="nav-item">
+            <a href="contacts.html" class="nav-item">
                 <span class="icon">👥</span> Contacts
             </a>
-            <a href="#" class="nav-item">
+            <a href="templates.html" class="nav-item">
                 <span class="icon">📝</span> Templates
             </a>
-            <a href="#" class="nav-item">
+            <a href="inbox.html" class="nav-item">
                 <span class="icon">📥</span> Inbox
             </a>
-            <a href="#" class="nav-item">
+            <a href="analytics.html" class="nav-item">
                 <span class="icon">📈</span> Analytics
             </a>
-            <a href="#" class="nav-item">
+            <a href="settings.html" class="nav-item">
                 <span class="icon">⚙️</span> Settings
             </a>
         </nav>
     </div>
     
-    <!-- Main Content -->
     <div class="main-content">
         <div class="header">
             <h1>Dashboard</h1>
@@ -285,7 +278,6 @@
             </div>
         </div>
         
-        <!-- Stats -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="label">Total Campaigns</div>
@@ -309,7 +301,6 @@
             </div>
         </div>
         
-        <!-- Chart -->
         <div class="chart-container">
             <h3>Email Performance (Last 30 Days)</h3>
             <div class="chart-bars">
@@ -332,7 +323,6 @@
             </div>
         </div>
         
-        <!-- Recent Activity -->
         <div class="activity-container">
             <h3>Recent Activity</h3>
             
