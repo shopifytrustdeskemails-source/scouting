@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Premium Cold Email Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f7fafc;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+            padding: 30px 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 40px;
+        }
+        
+        .logo span {
+            color: #667eea;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            color: #718096;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-bottom: 5px;
+            transition: all 0.2s;
+        }
+        
+        .nav-item:hover {
+            background: #f7fafc;
+            color: #2d3748;
+        }
+        
+        .nav-item.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .nav-item .icon {
+            margin-right: 12px;
+        }
+        
+        .main-content {
+            margin-left: 250px;
+            padding: 30px 40px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #2d3748;
+        }
+        
+        .settings-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        
+        .settings-card h3 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .settings-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f7fafc;
+        }
+        
+        .setting-row:last-child {
+            border-bottom: none;
+        }
+        
+        .setting-row .label {
+            font-weight: 500;
+            color: #2d3748;
+        }
+        
+        .setting-row .description {
+            font-size: 13px;
+            color: #718096;
+        }
+        
+        .setting-row .control {
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
+        
+        .toggle {
+            width: 50px;
+            height: 28px;
+            background: #e2e8f0;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: background 0.3s;
+            position: relative;
+        }
+        
+        .toggle.active {
+            background: #667eea;
+        }
+        
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            transition: transform 0.3s;
+        }
+        
+        .toggle.active::after {
+            transform: translateX(22px);
+        }
+        
+        .input-field {
+            padding: 10px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            width: 300px;
+            transition: border-color 0.2s;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+        
+        .btn-danger {
+            background: #e53e3e;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn-danger:hover {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
+            .setting-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .setting-row .control {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .input-field {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">📧 <span>EmailPro</span></div>
+        <nav>
+            <a href="dashboard.html" class="nav-item">
+                <span class="icon">📊</span> Dashboard
+            </a>
+            <a href="campaigns.html" class="nav-item">
+                <span class="icon">📧</span> Campaigns
+            </a>
+            <a href="contacts.html" class="nav-item">
+                <span class="icon">👥</span> Contacts
+            </a>
+            <a href="templates.html" class="nav-item">
+                <span class="icon">📝</span> Templates
+            </a>
+            <a href="inbox.html" class="nav-item">
+                <span class="icon">📥</span> Inbox
+            </a>
+            <a href="analytics.html" class="nav-item">
+                <span class="icon">📈</span> Analytics
+            </a>
+            <a href="settings.html" class="nav-item active">
+                <span class="icon">⚙️</span> Settings
+            </a>
+        </nav>
+    </div>
+    
+    <div class="main-content">
+        <div class="header">
+            <h1>⚙️ Settings</h1>
+        </div>
+        
+        <div class="settings-card">
+            <h3>Profile Settings</h3>
+            <div class="settings-group">
+                <div class="setting-row">
+                    <div>
+                        <div class="label">Full Name</div>
+                        <div class="description">Your display name</div>
+                    </div>
+                    <div class="control">
+                        <input type="text" class="input-field" value="Oliver King Dev">
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <div>
+                        <div class="label">Email Address</div>
+                        <div class="description">Your primary email</div>
+                    </div>
+                    <div class="control">
+                        <input type="email" class="input-field" value="shopifytrustdesk.email@gmail.com">
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <div>
+                        <div class="label">Company Name</div>
+                        <div class="description">Your company or agency name</div>
+                    </div>
+                    <div class="control">
+                        <input type="text" class="input-field" value="EmailPro Agency">
+                    </div>
+                </div>
+                <div class="setting-row" style="border-bottom: none;">
+                    <div></div>
+                    <div class="control">
+                        <button class="btn-primary">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="settings-card">
+            <h3>Email Settings</h3>
+            <div class="settings-group">
+                <div class="setting-row">
+                    <div>
+                        <div class="label">Daily Sending Limit</div>
+                        <div class="description">Maximum emails per day</div>
+                    </div>
+                    <div class="control">
+                        <input type="number" class="input-field" value="500" style="width:150px;">
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <div>
+                        <div class="label">Default Timezone</div>
+                        <div class="description">Time zone for scheduling</div>
+                    </div>
+                    <div class="control">
+                        <select class="input-field" style="width:200px;">
+                            <option>UTC (GMT +0)</option>
+                            <option selected>EST (GMT -5)</option>
+                            <option>PST (GMT -8)</option>
+                            <option>GMT (GMT +1)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="setting-row" style="border-bottom: none;">
+                    <div>
+                        <div class="label">Enable Auto-Reply Detection</div>
+                        <div class="description">Stop sending when replies are detected</div>
+                    </div>
+                    <div class="control">
+                        <div class="toggle active"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="settings-card">
+            <h3>Gmail Integration</h3>
+            <div class="settings-group">
+                <div class="setting-row">
+                    <div>
+                        <div class="label">Connected Gmail Accounts</div>
+                        <div class="description">Accounts used for sending emails</div>
+                    </div>
+                    <div class="control">
+                        <span style="color:#38a169;">✅ shopifytrustdesk.email@gmail.com (Primary)</span>
+                    </div>
+                </div>
+                <div class="setting-row" style="border-bottom: none;">
+                    <div>
+                        <div class="label">Add New Account</div>
+                        <div class="description">Connect another Gmail account</div>
+                    </div>
+                    <div class="control">
+                        <button class="btn-primary">Connect Gmail</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="settings-card">
+            <h3>Danger Zone</h3>
+            <div class="settings-group">
+                <div class="setting-row" style="border-bottom: none;">
+                    <div>
+                        <div class="label" style="color:#e53e3e;">Delete Account</div>
+                        <div class="description">Permanently delete your account and all data</div>
+                    </div>
+                    <div class="control">
+                        <button class="btn-danger">Delete Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
